@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="elevator.Elevator"/>
-<fullyQualifiedTypeName name="elevator.ElevatorImp"/>
 <fullyQualifiedTypeName name="elevatorsystem.ElevatorPanel"/>
 <fullyQualifiedTypeName name="elevatorsystem.ElevatorSystemImp"/>
 <fullyQualifiedTypeName name="elevator.MovingState"/>
@@ -13,4 +12,13 @@
 <fullyQualifiedTypeName name="javafx.animation.AnimationTimer"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="java.util.Observable"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.Observer"/>
+<fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.VBox"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.HBox"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Queue"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="elevator.ElevatorImp"/>
 </qualifiedTypeNameHistroy>

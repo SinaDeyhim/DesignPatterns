@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestElevatorSystemImp" project="Assignment1A" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="test.elevator.TestElevatorSystemImp" time="0.002">
+    <testcase name="testCallDown" classname="test.elevator.TestElevatorSystemImp" time="0.002"/>
+    <testcase name="testCallUp" classname="test.elevator.TestElevatorSystemImp" time="0.0"/>
+  </testsuite>
+</testrun>

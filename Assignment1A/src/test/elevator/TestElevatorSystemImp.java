@@ -26,9 +26,8 @@ public class TestElevatorSystemImp {
 	public void testCallDown() {
 		ElevatorSystemImp elSys = new ElevatorSystemImp( 0, 20);
 		elSys.addElevator( new ElevatorImp( 1, (ElevatorPanel)elSys));
-		elSys.setCurrentFloor(10);
-		elSys.callDown(0);
-		assertTrue(elSys.getCurrentFloor()==0);
+		elSys.callDown(10);
+		assertTrue(elSys.getCurrentFloor()==10);
 	}
 
 }

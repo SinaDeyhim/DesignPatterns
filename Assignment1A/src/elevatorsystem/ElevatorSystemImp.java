@@ -1,7 +1,6 @@
 package elevatorsystem;
 
 import elevator.Elevator;
-import elevator.ElevatorImp;
 import elevator.MovingState;
 
 public class ElevatorSystemImp implements ElevatorPanel, ElevatorSystem {
@@ -31,7 +30,9 @@ public class ElevatorSystemImp implements ElevatorPanel, ElevatorSystem {
 	}
 	
 	
-	//it is not clear what to check  for
+	/**
+	 * it is not clear what to check  for
+	 */
 	private boolean checkForElevator() {
 		return elevator.getState()!=MovingState.Off;
 	}
@@ -46,50 +47,45 @@ public class ElevatorSystemImp implements ElevatorPanel, ElevatorSystem {
 	//not right
 	private Elevator call(int floor , MovingState direction) {
 		if(checkForElevator()) {
-			((ElevatorImp)elevator).setState(direction);
-			((ElevatorImp)elevator).moveTo(floor);
+			elevator.moveTo(floor);
 			return elevator;
-		} else {
-			throw new IllegalStateException("No elevator available");
 		}
-
+		throw new IllegalStateException("No elevator available");
 	}
+	
 	@Override
 	public Elevator callUp(int floor) {
 		floorCheck(floor);
-		return call(floor, floor<elevator.getFloor()? MovingState.SlowDown:MovingState.SlowUp);
+		return call(floor, MovingState.Up);
 		
 	}
 
 	@Override
 	public Elevator callDown(int floor) {
 		floorCheck(floor);
-		return call(floor,floor>elevator.getFloor()? MovingState.SlowUp:MovingState.SlowDown);
+		return call(floor,MovingState.Down);
 	}
 
 	@Override
 	public int getCurrentFloor() {
-		return ((ElevatorImp) this.elevator).getFloor();
-	}
-	
-	public void setCurrentFloor(int floor) {
-		 ((ElevatorImp) this.elevator).setCurrentFloor(floor);
+		return this.elevator.getFloor();
 	}
 
 	@Override
 	public double getPowerConsumed() {
-		return ((ElevatorImp) this.elevator).getPowerConsumed();
+		return this.elevator.getPowerConsumed();
 	}
 
 	@Override
 	public void addElevator(Elevator elevator) {
 		this.elevator=elevator;
+		//error check
 		
 	}
 
 	@Override
 	public void requestStop(int floor, Elevator elevator) {
-		((ElevatorImp) elevator).requestStop(floor);
+		elevator.moveTo(floor);
 	}
 	
 

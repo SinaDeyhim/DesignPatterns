@@ -19,14 +19,16 @@ public class ElevatorImp extends Observable implements Elevator{
 	private static int counter=0;
 
 
-	//elevator constructor. changed the max_capacity to int
+	
 	public ElevatorImp(int MAX_CAPACITY_PERSONS, ElevatorPanel panel) {
 		this.MAX_CAPACITY_PERSONS=MAX_CAPACITY_PERSONS;
-		this.panel=panel;
-		setCapacity(MAX_CAPACITY_PERSONS);
+		this.panel=panel;	
 	}
 
-	//move elevator do the power here as well
+	/**
+	 * This method moves the elevator to a new floor. 
+	 * @param floor is the target floor.
+	 */
 	@Override
 	public void moveTo(int floor) {
 		
@@ -36,7 +38,6 @@ public class ElevatorImp extends Observable implements Elevator{
 			setChanged(); 
 			notifyObservers(Arrays.asList(getFloor(), floor ,getPowerConsumed()));
 		}
-
 		setCurrentFloor(floor);
 		counter=0;
 	}
@@ -44,10 +45,10 @@ public class ElevatorImp extends Observable implements Elevator{
 
 	private void processMovingState(int floor) {
 		int step = (floor>getFloor())? 1:-1;
+		state =(floor>getFloor())? MovingState.SlowUp:MovingState.SlowDown;
 		switch(Math.abs(floor - getFloor())){
 		case 0:
 			state=MovingState.Idle;
-			powerUsed+=0;
 			break;
 		case 1:
 			state=state.slow();
@@ -58,17 +59,12 @@ public class ElevatorImp extends Observable implements Elevator{
 			if (counter!=0) {
 				state=state.normal();
 				powerUsed+=1;
-				setCurrentFloor(getFloor()+step);
 			} else {//this is here to cover the elevator start, and avoid designating a normal state for it.
 				state=state.slow();
 				powerUsed+=2;
-				setCurrentFloor(getFloor()+step);
 			}
+			setCurrentFloor(getFloor()+step);
 		}
-	}
-
-	public void setCapacity(int capacity) {
-		this.capacity=capacity;
 	}
 
 	@Override
@@ -105,28 +101,19 @@ public class ElevatorImp extends Observable implements Elevator{
 	public void addPersons(int persons) {
 		if (persons<0) {
 			throw new IllegalArgumentException("Invalid input; number of persons cannot be negative");	
-		}else if(getCapacity()<persons) {
+		}else if(MAX_CAPACITY_PERSONS<persons+capacity) {
 			throw new IllegalArgumentException("There is not enough room for all you guys!");
-		}else {
-			capacity-=persons;
 		}
+		capacity-=persons;
 	}
 
 	@Override
 	public void requestStop(int floor) {
-		powerUsed=0;
-		state=floor<getFloor()? MovingState.SlowDown:MovingState.SlowUp;
-		moveTo(floor);
+		panel.requestStop(floor, this);
 	}
-	//the comment was to make this public, but I have used it to pass the floor to ElevatorSystemImp
-	public void setCurrentFloor(int floor) {
+	
+	private void setCurrentFloor(int floor) {
 		this.currentFloor=floor;
-	}
-	
-
-	
-	public void setState(MovingState state) {
-		 this.state=state;
 	}
 	
 }
