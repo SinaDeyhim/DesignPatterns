@@ -20,14 +20,6 @@ public class ElevatorApplication extends Application implements Observer {
 	private Label[] floors;
 	private static final int FLOOR_COUNT=21;
 	private ElevatorAnimator animator;
-	
-	private TextField textfieldCF = new TextField();
-	private TextField textfieldTF = new TextField();
-	private TextField textfieldPU = new TextField();
-	private Label labelCF = new Label();
-	private Label labelTF = new Label();
-	private Label labelPU = new Label();
-	
 	@Override
 	public void init() throws Exception {
 
@@ -39,8 +31,6 @@ public class ElevatorApplication extends Application implements Observer {
 			floors[i].setId("empty");
 		}
 		floors[0].setId("elevator");
-		
-		
 		
 	}
 
@@ -61,19 +51,24 @@ public class ElevatorApplication extends Application implements Observer {
 		
 		GridPane floorPane = new GridPane();
 		
-
-
+		TextField textfieldCF = new TextField();
+		TextField textfieldTF = new TextField();
+		TextField textfieldPU = new TextField();
+		Label labelCF = new Label();
+		Label labelTF = new Label();
+		Label labelPU = new Label();
+		HBox buffer = new HBox();
 		
-		labelTF.setText("  Target Floor");
-		labelCF.setText("  Current Floor");
-		labelPU.setText("  Power Used");
+		labelTF.setText("Target Floor");
+		labelCF.setText("Current Floor");
+		labelPU.setText("Power Used");
 		
 		
 		
 		for (int i = floors.length-1; i >0; i--) {
 			floorPane.add(floors[i], 0,(floors.length-1)-i);
 		}
-
+		floorPane.add(buffer, 1, 3);
 		floorPane.add(labelTF, 2, 2);
 		floorPane.add(textfieldTF, 3, 2);
 		floorPane.add(labelCF, 2, 3);
@@ -130,9 +125,6 @@ public class ElevatorApplication extends Application implements Observer {
 				floors[currentFloor].setId("empty");
 				currentFloor+=step;
 				floors[currentFloor].setId("elevator");
-				textfieldCF.setText(String.valueOf(currentFloor));
-				textfieldTF.setText(String.valueOf(targetFloor));
-				
 			}
 		}
 	}

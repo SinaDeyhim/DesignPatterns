@@ -64,9 +64,9 @@ public class ElevatorApplication extends Application implements Observer {
 
 
 		
-		labelTF.setText("  Target Floor");
-		labelCF.setText("  Current Floor");
-		labelPU.setText("  Power Used");
+		labelTF.setText("Target Floor");
+		labelCF.setText("Current Floor");
+		labelPU.setText("Power Used");
 		
 		
 		

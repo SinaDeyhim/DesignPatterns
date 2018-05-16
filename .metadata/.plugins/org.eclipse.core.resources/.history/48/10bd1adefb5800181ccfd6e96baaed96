@@ -1,33 +1,20 @@
 package simulator;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Random;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
-public class ElevatorApplication extends Application implements Observer {
+public class ElevatorApplication extends Application {
 
 	private Label[] floors;
 	private static final int FLOOR_COUNT=21;
 	private ElevatorAnimator animator;
-	
-	private TextField textfieldCF = new TextField();
-	private TextField textfieldTF = new TextField();
-	private TextField textfieldPU = new TextField();
-	private Label labelCF = new Label();
-	private Label labelTF = new Label();
-	private Label labelPU = new Label();
-	
 	@Override
 	public void init() throws Exception {
 
@@ -39,9 +26,6 @@ public class ElevatorApplication extends Application implements Observer {
 			floors[i].setId("empty");
 		}
 		floors[0].setId("elevator");
-		
-		
-		
 	}
 
 	@Override
@@ -58,31 +42,11 @@ public class ElevatorApplication extends Application implements Observer {
 	}
 
 	private GridPane createElevatorFloors() {
-		
 		GridPane floorPane = new GridPane();
-		
-
-
-		
-		labelTF.setText("  Target Floor");
-		labelCF.setText("  Current Floor");
-		labelPU.setText("  Power Used");
-		
-		
-		
 		for (int i = floors.length-1; i >0; i--) {
 			floorPane.add(floors[i], 0,(floors.length-1)-i);
 		}
-
-		floorPane.add(labelTF, 2, 2);
-		floorPane.add(textfieldTF, 3, 2);
-		floorPane.add(labelCF, 2, 3);
-		floorPane.add(textfieldCF, 3, 3);
-		floorPane.add(labelPU, 2, 4);
-		floorPane.add(textfieldPU, 3, 4);
-		
 		return floorPane;
-		
 	}
 
 
@@ -130,20 +94,11 @@ public class ElevatorApplication extends Application implements Observer {
 				floors[currentFloor].setId("empty");
 				currentFloor+=step;
 				floors[currentFloor].setId("elevator");
-				textfieldCF.setText(String.valueOf(currentFloor));
-				textfieldTF.setText(String.valueOf(targetFloor));
-				
 			}
 		}
 	}
 
 	public static void main(String[] args) {
 		launch(args);
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
 	}
 }

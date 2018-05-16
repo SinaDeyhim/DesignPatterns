@@ -1,6 +1,5 @@
 package elevator;
 
-import java.util.Arrays;
 import java.util.Observable;
 
 import elevatorsystem.ElevatorPanel;
@@ -33,8 +32,7 @@ public class ElevatorImp extends Observable implements Elevator{
 		while(getFloor()!=floor) {
 			processMovingState(floor);
 			counter++; //  helper variable  used by the processMovingState to set the stage to slow at the start
-			setChanged(); 
-			notifyObservers(Arrays.asList(getFloor(), floor ,getPowerConsumed()));
+			//observable
 		}
 
 		setCurrentFloor(floor);
