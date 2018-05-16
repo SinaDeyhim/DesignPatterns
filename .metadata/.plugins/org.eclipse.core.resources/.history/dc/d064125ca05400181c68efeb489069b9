@@ -1,0 +1,98 @@
+package elevator;
+
+import elevatorsystem.ElevatorPanel;
+
+public class ElevatorImp implements Elevator {
+	private int POWER_START_STOP=2;
+	private int POWER_CONTINUOUS=1;
+	private long SLEEP_START_STOP=25;
+	private long SLEEP_CONTINUOUS=25;
+	private int MAX_CAPACITY_PERSONS;
+	private double powerUsed;
+	private int currentFloor=0;
+	private int capacity;
+	private ElevatorPanel panel;
+	private MovingState state;
+
+
+	//elevator constructor. changed the max_capacity to int
+	public ElevatorImp(int MAX_CAPACITY_PERSONS, ElevatorPanel panel) {
+		this.MAX_CAPACITY_PERSONS=MAX_CAPACITY_PERSONS;
+		this.panel=panel;
+		setCapacity(MAX_CAPACITY_PERSONS);
+	}
+
+	//move elevator do the power here as well
+	@Override
+	public void moveTo(int floor) {
+		setCurrentFloor(floor);
+
+	}
+
+
+	private void processMovingState(int floor) {
+		Math.abs(floor - getCurrentFloor());
+
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity=capacity;
+	}
+
+	@Override
+	public int getCapacity() {
+		return capacity;
+	}
+
+	@Override
+	public boolean isFull() {
+		return capacity==0;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return capacity==MAX_CAPACITY_PERSONS;
+	}
+
+	@Override
+	public MovingState getState() {
+		return state;
+	}
+
+	@Override
+	public double getPowerConsumed() {
+		return powerUsed;
+	}
+
+	@Override
+	public int getFloor() {
+		return currentFloor;
+	}
+
+	@Override
+	public void addPersons(int persons) {
+		if (persons<0) {
+			throw new IllegalArgumentException("Invalid input; number of persons cannot be negative");	
+		}else if(getCapacity()<persons) {
+			throw new IllegalArgumentException("There is not enough room for you guys!");
+		}else {
+			capacity-=persons;
+		}
+	}
+
+	@Override
+	public void requestStop(int floor) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setCurrentFloor(int floor) {
+		this.currentFloor=floor;
+	}
+	
+	public int getCurrentFloor() {
+		return currentFloor;
+	}
+
+
+}

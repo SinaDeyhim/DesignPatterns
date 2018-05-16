@@ -1,0 +1,82 @@
+package elevator;
+
+import elevatorsystem.ElevatorPanel;
+
+public class ElevatorImp implements Elevator {
+	private int POWER_START_STOP=2;
+	private int POWER_CONTINUOUS=1;
+	private long SLEEP_START_STOP=25;
+	private long SLEEP_CONTINUOUS=25;
+	private int MAX_CAPACITY_PERSONS;
+	private double powerUsed;
+	private int currentFloor;
+	private int capacity;
+	private ElevatorPanel panel;
+	private MovingState state;
+	
+	
+	//elevator constructor. changed the capacity to int
+	public ElevatorImp(int CAPACITY_PERSONS, ElevatorPanel panel) {
+		capacity= CAPACITY_PERSONS;
+		this.panel=panel;
+	}
+	
+	//move elevator
+	public void moveTo(int floor) {
+		
+	}
+	
+	public void processMovingState(int floor) {
+		
+	}
+
+	@Override
+	public int getCapacity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isFull() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public MovingState getState() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getPowerConsumed() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getFloor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void addPersons(int persons) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void requestStop(int floor) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

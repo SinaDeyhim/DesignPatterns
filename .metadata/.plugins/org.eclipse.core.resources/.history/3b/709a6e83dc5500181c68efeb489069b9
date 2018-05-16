@@ -1,0 +1,35 @@
+package test.elevator;
+import elevator.Elevator;
+import elevator.ElevatorImp;
+import elevatorsystem.ElevatorPanel;
+import elevatorsystem.ElevatorSystem;
+import elevatorsystem.ElevatorSystemImp;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestElevatorImp {
+
+	@Test
+	public void testMoveTo() {
+		ElevatorSystem system = new ElevatorSystemImp(0,20); 
+		Elevator el = new ElevatorImp(1,(ElevatorPanel)system);
+		el.moveTo(12);
+		assertTrue(el.getFloor()==12);
+	}
+
+	@Test
+	public void testGetPowerConsumed() {
+		ElevatorSystem system = new ElevatorSystemImp(0,20); 
+		Elevator el = new ElevatorImp(1,(ElevatorPanel)system);
+		el.moveTo(12);
+		assertTrue(el.getPowerConsumed()==14);
+	}
+
+	@Test
+	public void testRequestStop() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,24 @@
+package test.elevator;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestElevatorSystemImp {
+
+	@Test
+	public void testElevatorSystemImp() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCallUp() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCallDown() {
+		fail("Not yet implemented");
+	}
+
+}

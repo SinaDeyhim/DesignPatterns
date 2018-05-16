@@ -1,0 +1,92 @@
+package gui;
+import java.util.Random;
+
+import javafx.animation.AnimationTimer;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+
+public class ElevatorApplicationSample extends Application {
+	
+	private Label[] floors;
+	private static final int FLOOR_COUNT=21;
+	private ElevatorAnimator animator;
+	
+	@Override
+	public void init() throws Exception {
+		
+		super.init();
+		animator=new ElevatorAnimator();
+		floors = new Label[FLOOR_COUNT];
+		for (int i = 0; i < floors.length; i++) {
+			floors[i]= new Label();
+			floors[i].setId("empty");
+		}
+		floors[0].setId("elevator");
+		
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		GridPane main = new GridPane();
+		
+		main.add(createElevatorFloors() , 0, 0);
+		Scene scene = new Scene (main,Color.LIGHTGRAY);
+		scene.getStylesheets().add(ElevatorApplicationSample.class.getResource("elevator.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Elevator Simulator");
+		primaryStage.show();
+		animator.start();
+		
+	}
+	
+	private GridPane createElevatorFloors() {
+		GridPane floorPane = new GridPane();
+		for (int i = floors.length-1; i >0; i--) {
+			floorPane.add(floors[i], 0,(floors.length-1)-i);
+		}
+		return floorPane;
+	}
+	
+	
+	@Override
+	public void stop() throws Exception {
+		// TODO Auto-generated method stub
+		super.stop();
+		animator.stop();
+	}
+	
+	private class ElevatorAnimator extends AnimationTimer{
+		private boolean newTurn= true;
+		private Random rand = new Random(); //replace this when dping the assignment 
+		private int currentFloor=0;
+		private int targetFloor;
+		private int step;
+
+		@Override
+		public void handle(long now) {
+			// TODO Auto-generated method stub
+			if (newTurn) {
+				do {
+					targetFloor=rand.nextInt(FLOOR_COUNT);
+				}while (targetFloor==currentFloor);
+				step=targetFloor>currentFloor?1:-1;
+				floors[targetFloor].setId("target");
+				newTurn = false;		
+			}	
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	
+	
+	
+
+}

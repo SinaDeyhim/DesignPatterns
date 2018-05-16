@@ -1,0 +1,24 @@
+package test.elevator;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestElevatorImp {
+
+	@Test
+	public void testMoveTo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetPowerConsumed() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRequestStop() {
+		fail("Not yet implemented");
+	}
+
+}

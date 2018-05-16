@@ -1,0 +1,71 @@
+package elevatorsystem;
+
+import elevator.Elevator;
+
+public class ElevatorSystemImp implements ElevatorPanel, ElevatorSystem {
+	
+	private int MIN_FLOOR;
+	private int MAX_FLOOR;
+	private Elevator elevator;
+	
+	public ElevatorSystemImp(int MIN_FLOOR, int MAX_FLOOR) {
+		this.MIN_FLOOR=MIN_FLOOR;
+		this.MAX_FLOOR=MAX_FLOOR;
+	}
+
+	@Override
+	public int getFloorCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getMaxFloor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getMinFloor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Elevator callUp(int floor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Elevator callDown(int floor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getCurrentFloor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getPowerConsumed() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void addElevator(Elevator elevator) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void requestStop(int floor, Elevator elevator) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}
